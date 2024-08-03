@@ -3,7 +3,7 @@
 <head>
    <title>Olympic Rings Animation</title>
    <style>
-      /* Common styling for the logo container */
+     
       .olympic-logo {
          width: 494px;
          height: 227.5px;
@@ -16,7 +16,7 @@
          overflow: hidden;
       }
 
-      /* Individual circles */
+      
       .circle {
          width: 100px;
          height: 100px;
@@ -24,7 +24,7 @@
          position: absolute;
          border: 10px solid;
          border-color: black;
-         transition: border-color 1s ease, transform 1s ease; /* Added transition */
+         transition: border-color 1s ease, transform 1s ease; 
       }
       .blue { border-color: blue; }
       .black { border-color: black; }
@@ -32,7 +32,7 @@
       .yellow { border-color: yellow; }
       .green { border-color: green; }
       
-      /* Fire animation */
+      
       @keyframes fire {
          0% {
             border-width: 10px;
@@ -54,31 +54,31 @@
          }
       }
       
-      /* Apply fire animation to all circles */
+    
       .circle {
          animation: fire 3s forwards;
       }
 
-      /* Positioning the circles */
+      
       .blue { left: 0; top: 0; }
       .black { left: 130px; top: 0; }
       .red { left: 260px; top: 0; }
       .yellow { left: 65px; top: 55px; }
       .green { left: 195px; top: 55px; }
 
-      /* Apply colors after fire animation */
+     
       .circle:nth-child(1) { animation-delay: 0s; }
       .circle:nth-child(2) { animation-delay: 0.5s; }
       .circle:nth-child(3) { animation-delay: 1s; }
       .circle:nth-child(4) { animation-delay: 1.5s; }
       .circle:nth-child(5) { animation-delay: 2s; }
 
-      /* Text styling */
+    
       .end-text {
          display: none;
          font-size: 24px;
          font-weight: bold;
-         color: transparent; /* Start as transparent for reveal effect */
+         color: transparent; 
          position: absolute;
          bottom: 20px;
          text-align: center;
@@ -96,7 +96,7 @@
          font-family: Arial, sans-serif;
       }
 
-      /* Gradient text color */
+     
       .show-text .end-text {
          display: block;
          opacity: 1;
@@ -109,24 +109,25 @@
    </style>
 </head>
 <body>
-   <!-- Logo container -->
+ 
    <div class="olympic-logo">
-      <!-- Circles -->
+     
       <div class="circle blue"></div>
       <div class="circle black"></div>
       <div class="circle red"></div>
       <div class="circle yellow"></div>
       <div class="circle green"></div>
-      <!-- Text -->
+      
       <div class="end-text">End of Olympics 2024</div>
    </div>
    <script>
-      // Add class to show the text after the animation ends
+      
       document.querySelector('.olympic-logo').addEventListener('animationend', function() {
          setTimeout(() => {
             this.classList.add('show-text');
-         }, 1000); // Delay for text appearance (matches the fire animation duration)
+         }, 1000);
       });
    </script>
 </body>
 </html>
+
