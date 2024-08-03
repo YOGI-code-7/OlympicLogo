@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Olympic Rings Animation</title>
+   <style>
+      /* Common styling for the logo container */
+      .olympic-logo {
+         width: 494px;
+         height: 227.5px;
+         font-size: 10px;
+         position: relative;
+         margin: 50px auto;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overflow: hidden;
+      }
+
+      /* Individual circles */
+      .circle {
+         width: 100px;
+         height: 100px;
+         border-radius: 50%;
+         position: absolute;
+         border: 10px solid;
+         border-color: black;
+         transition: border-color 1s ease, transform 1s ease; /* Added transition */
+      }
+      .blue { border-color: blue; }
+      .black { border-color: black; }
+      .red { border-color: red; }
+      .yellow { border-color: yellow; }
+      .green { border-color: green; }
+      
+      /* Fire animation */
+      @keyframes fire {
+         0% {
+            border-width: 10px;
+            border-color: black;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transform: scale(1);
+         }
+         50% {
+            border-width: 10px;
+            border-color: orange;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+            transform: scale(1.2);
+         }
+         100% {
+            border-width: 10px;
+            border-color: transparent;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transform: scale(1);
+         }
+      }
+      
+      /* Apply fire animation to all circles */
+      .circle {
+         animation: fire 3s forwards;
+      }
+
+      /* Positioning the circles */
+      .blue { left: 0; top: 0; }
+      .black { left: 130px; top: 0; }
+      .red { left: 260px; top: 0; }
+      .yellow { left: 65px; top: 55px; }
+      .green { left: 195px; top: 55px; }
+
+      /* Apply colors after fire animation */
+      .circle:nth-child(1) { animation-delay: 0s; }
+      .circle:nth-child(2) { animation-delay: 0.5s; }
+      .circle:nth-child(3) { animation-delay: 1s; }
+      .circle:nth-child(4) { animation-delay: 1.5s; }
+      .circle:nth-child(5) { animation-delay: 2s; }
+
+      /* Text styling */
+      .end-text {
+         display: none;
+         font-size: 24px;
+         font-weight: bold;
+         color: transparent; /* Start as transparent for reveal effect */
+         position: absolute;
+         bottom: 20px;
+         text-align: center;
+         width: 100%;
+         opacity: 0;
+         transform: scale(0.8);
+         transition: opacity 1s ease, transform 1s ease, color 1s ease; /* Added transition */
+         background-color: rgba(0, 0, 0, 0.6);
+         padding: 10px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+         background-clip: text;
+         -webkit-background-clip: text;
+         font-family: Arial, sans-serif;
+      }
+
+      /* Gradient text color */
+      .show-text .end-text {
+         display: block;
+         opacity: 1;
+         transform: scale(1);
+         color: transparent;
+         background: linear-gradient(90deg, blue, black, red, yellow, green);
+         -webkit-background-clip: text;
+         background-clip: text;
+      }
+   </style>
+</head>
+<body>
+   <!-- Logo container -->
+   <div class="olympic-logo">
+      <!-- Circles -->
+      <div class="circle blue"></div>
+      <div class="circle black"></div>
+      <div class="circle red"></div>
+      <div class="circle yellow"></div>
+      <div class="circle green"></div>
+      <!-- Text -->
+      <div class="end-text">End of Olympics 2024</div>
+   </div>
+   <script>
+      // Add class to show the text after the animation ends
+      document.querySelector('.olympic-logo').addEventListener('animationend', function() {
+         setTimeout(() => {
+            this.classList.add('show-text');
+         }, 1000); // Delay for text appearance (matches the fire animation duration)
+      });
+   </script>
+</body>
+</html>
